@@ -1,0 +1,14 @@
+*
+!*.*
+!*/
+.DS_Store
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/settings.json
+.vscode/tasks.json
+3_sem/.vscode/c_cpp_properties.json
+3_sem/.vscode/settings.json
+3_sem/.vscode/tasks.json
+*.out
+*.o
+
