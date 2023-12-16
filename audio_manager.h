@@ -7,16 +7,17 @@
 #include <chrono>
 #include <thread>
 struct audio_manager {
-    audio_manager(std::string filename): filename(filename){
+    audio_manager(std::string file){
+        filename=file;
+        std::cout<<"filename";
         audioFile.load (filename);
         framesamp=audioFile.getSampleRate()/fps;
         if(framesamp!=audioFile.getSampleRate()/fps) std::cout<<"wrong fps";
     }
-    audio_manager(){audio_manager{"test.wav"};}
+    audio_manager(){audio_manager("test.wav");}
     void play(){
         start=std::chrono::system_clock::now();
         system(("afplay " + filename).c_str());
-
     }
     void set_fps(int frames){
         fps=frames;
