@@ -12,7 +12,7 @@ int main(){
 
     // Create a test signal.
     int N = 1000;
-    std::vector<std::complex<float>> signal;
+    std::vector<float> signal;
     signal.reserve (N);
 
     float sigK = 100.0;
@@ -20,9 +20,9 @@ int main(){
 
     for (int x=0; x<N; x++)
     {
-        auto currentSample = std::complex<float>
+        float currentSample = 
             (cos((2*M_PI/static_cast<float> (N)) *
-                sigK * static_cast<float> (x) + sigPhase), 0.0);
+                sigK * static_cast<float> (x) + sigPhase));
         signal.push_back(currentSample);
     }
 

@@ -32,6 +32,9 @@ void print (std::vector<float> signal){
         for (int b = 0; b < average; b++){
             std::cout<<"#";
         }
+        for (int b = average; b < 9; b++){
+            std::cout<<"-";
+        }
         std::cout<<"\n";
     }
 }
