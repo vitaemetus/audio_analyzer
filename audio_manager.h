@@ -9,8 +9,8 @@
 struct audio_manager {
     audio_manager(std::string filename): filename(filename){
         audioFile.load (filename);
-        framesamp=audioFile.getSampleRate();
-        if(framesamp!=audioFile.getSampleRate()) std::cout<<"wrong fps";
+        framesamp=audioFile.getSampleRate()/fps;
+        if(framesamp!=audioFile.getSampleRate()/fps) std::cout<<"wrong fps";
     }
     audio_manager(){audio_manager{"test.wav"};}
     void play(){
@@ -18,10 +18,20 @@ struct audio_manager {
         system(("afplay " + filename).c_str());
 
     }
+    void set_fps(int frames){
+        fps=frames;
+    }
+    void set_data_len(int l){
+        if(l<framesamp) data_len=framesamp;
+        else{
+            std::cout<<"too many samples";
+            data_len=framesamp;
+        }
+    }
     std::vector <float> get_samples(){
 
         current_sample+=framesamp;
-        return std::vector <float> (audioFile.samples[0].begin()+(current_sample-framesamp), audioFile.samples[0].begin()+current_sample);
+        return std::vector <float> (audioFile.samples[0].begin()+(current_sample-data_len), audioFile.samples[0].begin()+current_sample);
     }
     bool wait(){
         std::chrono::duration<double> diff = std::chrono::system_clock::now() - start;
@@ -41,7 +51,8 @@ struct audio_manager {
     std::string filename;
     AudioFile<double> audioFile;
     int framesamp;
-    int fps=30;
+    int fps=12;
+    int data_len=1000;
     int current_sample=0;
     std::chrono::time_point<std::chrono::system_clock> start;
     double lengthInSeconds = audioFile.getLengthInSeconds();
