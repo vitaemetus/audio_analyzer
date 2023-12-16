@@ -35,7 +35,7 @@ struct audio_manager {
     }
     bool wait(){
         std::chrono::duration<double> diff = std::chrono::system_clock::now() - start;
-        if(diff.count()+1>=lengthInSeconds) return 0;
+        if(diff.count()+1>=lengthInSeconds) return 1; //fix here
         else if(diff.count()<current_sample/fps){
             int delay = (current_sample/fps-diff.count())*1e6;
             std::this_thread::sleep_for(std::chrono::microseconds(delay));

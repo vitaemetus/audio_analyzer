@@ -7,9 +7,9 @@ int main(){
     AM.set_data_len(500);
     bool end=1;
     AM.play();
-    //while(end){
-    //     print(AM.get_samples());
-    //     end=AM.wait();
-    // }
+    while(end){
+         print(AM.get_samples());
+        end=AM.wait();
+     }
     AM.summ();
 }

@@ -13,7 +13,7 @@ std::vector<float> dft (std::vector<float> X){
 
     std::complex<float> sum;
 
-    for (int k = 0; k < K; k++){
+    for (int k = 1; k < K; k++){
         sum = std::complex<float>(0, 0);
         for (int n  = 0; n < N; n++){
             float Real = cos(2 * M_PI * k * (static_cast<float> (n) / static_cast<float> (N)));
