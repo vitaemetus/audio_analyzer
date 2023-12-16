@@ -1,4 +1,5 @@
 #include "audio_manager.h"
+#include "print.h"
 
 int main(){
     audio_manager AM;
@@ -7,7 +8,7 @@ int main(){
     bool end=1;
     AM.play();
     while(end){
-        //your function(AM.get_samples())
+        print(AM.get_samples());
         end=AM.wait();
     }
     AM.summ();
