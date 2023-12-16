@@ -8,7 +8,7 @@
 
 #include "dft.h"
 
-void print (std::vector<float> & signal){
+void print (std::vector<float> signal){
     //Number of bins
     int n_bins = 10;
 
