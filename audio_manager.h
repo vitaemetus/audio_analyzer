@@ -9,15 +9,14 @@
 struct audio_manager {
     audio_manager(std::string file){
         filename=file;
-        std::cout<<"filename";
         audioFile.load (filename);
         framesamp=audioFile.getSampleRate()/fps;
         if(framesamp!=audioFile.getSampleRate()/fps) std::cout<<"wrong fps";
     }
-    audio_manager(){audio_manager("test.wav");}
     void play(){
         start=std::chrono::system_clock::now();
-        system(("afplay " + filename).c_str());
+        std::cout<<'\n'<<filename<<2;
+        system(("osascript -e \'tell app \"Terminal\" to do script \"afplay " + filename + "\" \'").c_str());
     }
     void set_fps(int frames){
         fps=frames;
@@ -50,7 +49,7 @@ struct audio_manager {
 
     private:
     std::string filename;
-    AudioFile<double> audioFile;
+    AudioFile <double> audioFile;
     int framesamp;
     int fps=12;
     int data_len=1000;
