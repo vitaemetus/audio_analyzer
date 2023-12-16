@@ -8,7 +8,7 @@
 
 #include "dft.h"
 
-void print (std::vector<float> signal){
+void print (std::vector<float> & signal){
     //Number of bins
     int n_bins = 10;
 
@@ -28,7 +28,7 @@ void print (std::vector<float> signal){
 
         float average = 10 * (*std::max_element(sliced_Fx.begin(), sliced_Fx.end())) / (max);
 
-        std::cout<<i*50<<":\t"<<std::setw(6);
+        std::cout<<"\r"<<i*50<<":\t"<<std::setw(6);
         for (int b = 0; b < average; b++){
             std::cout<<"#";
         }
