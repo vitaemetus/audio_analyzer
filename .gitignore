@@ -12,3 +12,5 @@
 *.out
 *.o
 
+log.py
+dft
